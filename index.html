@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color"
+        content="#0d6efd">
+
+  <meta name="description"
+        content="ORION - Consulta de Escala">
+
+  <link rel="manifest"
+        href="manifest.json">
+
+  <link rel="apple-touch-icon"
+        href="icons/icon-192.png">
+
+  <title>ORION</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 0 0 25px 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f4f7;
+      color: #212529;
+    }
+
+    .topo {
+      background: #0d6efd;
+      color: white;
+      padding: 20px 16px 18px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .subtitulo {
+      margin-top: 4px;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+    .conteudo {
+      width: 100%;
+      max-width: 650px;
+      margin: auto;
+      padding: 14px;
+    }
+
+    .pesquisa {
+      background: white;
+      padding: 16px;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      margin-bottom: 16px;
+    }
+
+    .pesquisa label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    #matricula {
+      width: 100%;
+      height: 52px;
+      border: 1px solid #ced4da;
+      border-radius: 10px;
+      padding: 0 14px;
+      font-size: 20px;
+      outline: none;
+      text-align: center;
+    }
+
+    #matricula:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 3px rgba(13,110,253,.15);
+    }
+
+    .botao {
+      width: 100%;
+      height: 52px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 10px;
+      background: #0d6efd;
+      color: white;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .botao:active {
+      transform: scale(.98);
+    }
+
+    .funcionario {
+      background: white;
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .nome {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .funcao {
+      color: #6c757d;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .data {
+      background: #e8f1ff;
+      color: #0d6efd;
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin: 14px 0 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .registro {
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 7px rgba(0,0,0,.07);
+      border-left: 4px solid #0d6efd;
+    }
+
+    .registro-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+
+    .tabela {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0d6efd;
+    }
+
+    .veiculo {
+      background: #f1f3f5;
+      padding: 5px 8px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .linha {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .horario {
+      background: #f8f9fa;
+      border-radius: 9px;
+      padding: 10px;
+      text-align: center;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .observacao {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid #e9ecef;
+      font-size: 13px;
+      color: #495057;
+    }
+
+    .observacao-titulo {
+      font-weight: 700;
+      color: #212529;
+      margin-bottom: 3px;
+    }
+
+    .mensagem {
+      background: white;
+      border-radius: 14px;
+      padding: 25px 15px;
+      text-align: center;
+      color: #6c757d;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .icone {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    #carregando {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #6c757d;
+    }
+
+    .spinner {
+      width: 35px;
+      height: 35px;
+      margin: auto;
+      border: 4px solid #dee2e6;
+      border-top-color: #0d6efd;
+      border-radius: 50%;
+      animation: girar .8s linear infinite;
+    }
+
+    @keyframes girar {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topo">
+
+  <div class="logo">
+    ORION
+  </div>
+
+  <div class="subtitulo">
+    Consulta de Escala
+  </div>
+
+</header>
+
+
+<main class="conteudo">
+
+
+  <section class="pesquisa">
+
+    <label for="matricula">
+      Matrícula
+    </label>
+
+    <input
+      id="matricula"
+      type="tel"
+      inputmode="numeric"
+      autocomplete="off"
+      placeholder="Digite a matrícula"
+      onkeydown="pressionouEnter(event)"
+    >
+
+    <button
+      class="botao"
+      onclick="consultar()"
+    >
+      🔎 CONSULTAR
+    </button>
+
+  </section>
+
+
+  <div id="carregando">
+
+    <div class="spinner"></div>
+
+    <div style="margin-top:8px;">
+      Consultando escala...
+    </div>
+
+  </div>
+
+
+  <section id="resultado"></section>
+
+
+</main>
+
+
+<script>
+
+
+const API_ORION =
+  "https://script.google.com/macros/s/AKfycbzu4_GZ6urs0WnOVIs7B2BtNaEnPou3xUMuyE1H0Y0S5ei5nPpV3W1XbVwmwXUvJogT/exec";
+
+
+function pressionouEnter(event) {
+
+  if (event.key === "Enter") {
+    consultar();
+  }
+
+}
+
+
+async function consultar() {
+
+  const campo =
+    document.getElementById("matricula");
+
+  const matricula =
+    campo.value.trim();
+
+
+  if (!matricula) {
+
+    mostrarMensagem(
+      "🔎",
+      "Digite a matrícula."
+    );
+
+    campo.focus();
+
+    return;
+  }
+
+
+  if (!/^\d+$/.test(matricula)) {
+
+    mostrarMensagem(
+      "⚠️",
+      "Digite somente números."
+    );
+
+    campo.focus();
+
+    return;
+  }
+
+
+  mostrarCarregando();
+
+
+  try {
+
+    const url =
+      API_ORION +
+      "?matricula=" +
+      encodeURIComponent(matricula);
+
+
+    const resposta =
+      await fetch(url, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+
+    if (!resposta.ok) {
+
+      throw new Error(
+        "Erro HTTP " + resposta.status
+      );
+
+    }
+
+
+    const dados =
+      await resposta.json();
+
+
+    mostrarResultado(dados);
+
+  }
+
+  catch (erro) {
+
+    console.error(erro);
+
+    mostrarMensagem(
+      "⚠️",
+      "Não foi possível consultar a escala."
+    );
+
+  }
+
+  finally {
+
+    esconderCarregando();
+
+  }
+
+}
+
+
+function mostrarCarregando() {
+
+  document.getElementById("carregando")
+    .style.display = "block";
+
+  document.getElementById("resultado")
+    .innerHTML = "";
+
+}
+
+
+function esconderCarregando() {
+
+  document.getElementById("carregando")
+    .style.display = "none";
+
+}
+
+
+function mostrarResultado(dados) {
+
+
+  if (
+    !dados ||
+    !dados.funcionario
+  ) {
+
+    mostrarMensagem(
+      "🔎",
+      "Matrícula não encontrada."
+    );
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="funcionario">
+
+      <div class="nome">
+        ${escapar(dados.funcionario)}
+      </div>
+
+      <div class="funcao">
+        ${escapar(dados.funcao || "")}
+      </div>
+
+    </div>
+
+  `;
+
+
+  const dias =
+    dados.dias || {};
+
+  const datas =
+    Object.keys(dias);
+
+
+  if (!datas.length) {
+
+    html += `
+
+      <div class="mensagem">
+
+        <div class="icone">
+          📅
+        </div>
+
+        Não existem registros de escala
+        para esta matrícula.
+
+      </div>
+
+    `;
+
+    document.getElementById("resultado")
+      .innerHTML = html;
+
+    return;
+
+  }
+
+
+  datas.forEach(function(data) {
+
+    html += `
+
+      <div class="data">
+        📅 ${escapar(data)}
+      </div>
+
+    `;
+
+
+    const registros =
+      dias[data] || [];
+
+
+    registros.forEach(function(registro) {
+
+      html += criarRegistro(registro);
+
+    });
+
+  });
+
+
+  document.getElementById("resultado")
+    .innerHTML = html;
+
+}
+
+
+function criarRegistro(registro) {
+
+  const tabela =
+    registro.tabela || "-";
+
+  const veiculo =
+    registro.veiculo || "-";
+
+  const linha =
+    registro.linha || "-";
+
+  const inicio =
+    registro.inicio || "";
+
+  const fim =
+    registro.fim || "";
+
+  const observacao =
+    registro.observacao || "";
+
+
+  let horario = "-";
+
+
+  if (inicio || fim) {
+
+    horario =
+      escapar(inicio) +
+      " ➜ " +
+      escapar(fim);
+
+  }
+
+
+  return `
+
+    <article class="registro">
+
+      <div class="registro-cabecalho">
+
+        <div class="tabela">
+          📋 Tabela ${escapar(tabela)}
+        </div>
+
+        <div class="veiculo">
+          🚌 ${escapar(veiculo)}
+        </div>
+
+      </div>
+
+      <div class="linha">
+        📍 ${escapar(linha)}
+      </div>
+
+      <div class="horario">
+        🕒 ${horario}
+      </div>
+
+      ${
+        observacao
+        ?
+        `
+
+          <div class="observacao">
+
+            <div class="observacao-titulo">
+              Observação
+            </div>
+
+            ${escapar(observacao)}
+
+          </div>
+
+        `
+        :
+        ""
+      }
+
+    </article>
+
+  `;
+
+}
+
+
+function mostrarMensagem(icone, texto) {
+
+  document.getElementById("resultado")
+    .innerHTML = `
+
+      <div class="mensagem">
+
+        <div class="icone">
+          ${icone}
+        </div>
+
+        ${texto}
+
+      </div>
+
+    `;
+
+}
+
+
+function escapar(valor) {
+
+  return String(valor)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
