@@ -12,15 +12,15 @@
         content="#0d6efd">
 
   <meta name="description"
-        content="ORION - Consulta de Escala">
+        content="Consulta de Escala">
 
   <link rel="manifest"
-        href="manifest.json">
+        href="./manifest.json">
 
   <link rel="apple-touch-icon"
-        href="icons/icon-192.png">
+        href="./icons/icon-192.png">
 
-  <title>ORION</title>
+  <title>ORION - Consulta de Escala</title>
 
 
   <style>
@@ -30,213 +30,659 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+
     body {
+
       margin: 0;
-      padding: 0 0 25px 0;
-      font-family: Arial, Helvetica, sans-serif;
+      padding: 0 0 30px 0;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: #f2f4f7;
+
       color: #212529;
+
     }
+
+
+    /* =====================================================
+       TOPO
+       ===================================================== */
 
     .topo {
+
       background: #0d6efd;
+
       color: white;
-      padding: 20px 16px 18px;
+
+      padding:
+        20px
+        16px
+        18px;
+
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,.18);
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.18);
+
     }
+
 
     .logo {
+
       font-size: 30px;
+
       font-weight: 800;
+
       letter-spacing: 2px;
+
     }
+
 
     .subtitulo {
+
       margin-top: 4px;
+
       font-size: 14px;
+
       opacity: .9;
+
     }
+
+
+    /* =====================================================
+       CONTEÚDO
+       ===================================================== */
 
     .conteudo {
+
       width: 100%;
+
       max-width: 650px;
+
       margin: auto;
+
       padding: 14px;
+
     }
+
+
+    /* =====================================================
+       FORMULÁRIO
+       ===================================================== */
 
     .pesquisa {
+
       background: white;
+
       padding: 16px;
+
       border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.08);
+
       margin-bottom: 16px;
+
     }
 
-    .pesquisa label {
-      display: block;
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 7px;
+
+    .campo {
+
+      margin-bottom: 13px;
+
     }
+
+
+    .campo label {
+
+      display: block;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      margin-bottom: 7px;
+
+    }
+
+
+    .campo-senha {
+
+      position: relative;
+
+    }
+
+
+    #matricula,
+    #senha {
+
+      width: 100%;
+
+      height: 52px;
+
+      border:
+        1px solid #ced4da;
+
+      border-radius: 10px;
+
+      padding:
+        0 14px;
+
+      font-size: 20px;
+
+      outline: none;
+
+      background: white;
+
+    }
+
 
     #matricula {
-      width: 100%;
-      height: 52px;
-      border: 1px solid #ced4da;
-      border-radius: 10px;
-      padding: 0 14px;
-      font-size: 20px;
-      outline: none;
+
       text-align: center;
+
     }
 
-    #matricula:focus {
-      border-color: #0d6efd;
-      box-shadow: 0 0 0 3px rgba(13,110,253,.15);
+
+    #senha {
+
+      padding-right: 52px;
+
     }
+
+
+    #matricula:focus,
+    #senha:focus {
+
+      border-color: #0d6efd;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(13,110,253,.15);
+
+    }
+
+
+    /* =====================================================
+       BOTÃO MOSTRAR SENHA
+       ===================================================== */
+
+    .mostrar-senha {
+
+      position: absolute;
+
+      right: 5px;
+
+      top: 5px;
+
+      width: 42px;
+
+      height: 42px;
+
+      border: none;
+
+      background: transparent;
+
+      border-radius: 8px;
+
+      font-size: 20px;
+
+      cursor: pointer;
+
+    }
+
+
+    /* =====================================================
+       BOTÃO CONSULTAR
+       ===================================================== */
 
     .botao {
+
       width: 100%;
+
       height: 52px;
-      margin-top: 10px;
+
+      margin-top: 3px;
+
       border: 0;
+
       border-radius: 10px;
+
       background: #0d6efd;
+
       color: white;
+
       font-size: 17px;
+
       font-weight: 700;
+
       cursor: pointer;
+
     }
+
 
     .botao:active {
+
       transform: scale(.98);
+
     }
 
-    .funcionario {
-      background: white;
-      padding: 16px;
-      border-radius: 14px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+    .botao:disabled {
+
+      opacity: .65;
+
+      cursor: wait;
+
     }
 
-    .nome {
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.25;
-    }
 
-    .funcao {
-      color: #6c757d;
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .data {
-      background: #e8f1ff;
-      color: #0d6efd;
-      padding: 10px 12px;
-      border-radius: 10px;
-      margin: 14px 0 10px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .registro {
-      background: white;
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 7px rgba(0,0,0,.07);
-      border-left: 4px solid #0d6efd;
-    }
-
-    .registro-cabecalho {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 9px;
-    }
-
-    .tabela {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0d6efd;
-    }
-
-    .veiculo {
-      background: #f1f3f5;
-      padding: 5px 8px;
-      border-radius: 7px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .linha {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .horario {
-      background: #f8f9fa;
-      border-radius: 9px;
-      padding: 10px;
-      text-align: center;
-      font-size: 19px;
-      font-weight: 700;
-    }
-
-    .observacao {
-      margin-top: 10px;
-      padding-top: 9px;
-      border-top: 1px solid #e9ecef;
-      font-size: 13px;
-      color: #495057;
-    }
-
-    .observacao-titulo {
-      font-weight: 700;
-      color: #212529;
-      margin-bottom: 3px;
-    }
-
-    .mensagem {
-      background: white;
-      border-radius: 14px;
-      padding: 25px 15px;
-      text-align: center;
-      color: #6c757d;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .icone {
-      font-size: 35px;
-      margin-bottom: 8px;
-    }
+    /* =====================================================
+       CARREGANDO
+       ===================================================== */
 
     #carregando {
+
       display: none;
+
       text-align: center;
+
       padding: 20px;
+
       color: #6c757d;
+
     }
+
 
     .spinner {
+
       width: 35px;
+
       height: 35px;
+
       margin: auto;
-      border: 4px solid #dee2e6;
-      border-top-color: #0d6efd;
+
+      border:
+        4px solid #dee2e6;
+
+      border-top-color:
+        #0d6efd;
+
       border-radius: 50%;
-      animation: girar .8s linear infinite;
+
+      animation:
+        girar .8s linear infinite;
+
     }
 
+
     @keyframes girar {
+
       to {
+
         transform: rotate(360deg);
+
       }
+
+    }
+
+
+    /* =====================================================
+       FUNCIONÁRIO
+       ===================================================== */
+
+    .funcionario {
+
+      background: white;
+
+      padding: 16px;
+
+      border-radius: 14px;
+
+      margin-bottom: 14px;
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.08);
+
+    }
+
+
+    .nome {
+
+      font-size: 20px;
+
+      font-weight: 700;
+
+      line-height: 1.25;
+
+    }
+
+
+    .funcao {
+
+      color: #6c757d;
+
+      font-size: 14px;
+
+      margin-top: 4px;
+
+    }
+
+
+    /* =====================================================
+       DATA
+       ===================================================== */
+
+    .data {
+
+      background: #e8f1ff;
+
+      color: #0d6efd;
+
+      padding:
+        10px
+        12px;
+
+      border-radius: 10px;
+
+      margin:
+        14px
+        0
+        10px;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+    }
+
+
+    /* =====================================================
+       REGISTRO
+       ===================================================== */
+
+    .registro {
+
+      background: white;
+
+      border-radius: 14px;
+
+      padding: 14px;
+
+      margin-bottom: 10px;
+
+      box-shadow:
+        0 2px 7px rgba(0,0,0,.07);
+
+      border-left:
+        4px solid #0d6efd;
+
+    }
+
+
+    .registro-cabecalho {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      align-items: center;
+
+      margin-bottom: 9px;
+
+      gap: 8px;
+
+    }
+
+
+    .tabela {
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      color: #0d6efd;
+
+    }
+
+
+    .veiculo {
+
+      background: #f1f3f5;
+
+      padding:
+        5px
+        8px;
+
+      border-radius: 7px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+    }
+
+
+    .linha {
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      margin-bottom: 8px;
+
+      line-height: 1.25;
+
+    }
+
+
+    .horario {
+
+      background: #f8f9fa;
+
+      border-radius: 9px;
+
+      padding: 10px;
+
+      text-align: center;
+
+      font-size: 19px;
+
+      font-weight: 700;
+
+    }
+
+
+    .observacao {
+
+      margin-top: 10px;
+
+      padding-top: 9px;
+
+      border-top:
+        1px solid #e9ecef;
+
+      font-size: 13px;
+
+      color: #495057;
+
+    }
+
+
+    .observacao-titulo {
+
+      font-weight: 700;
+
+      color: #212529;
+
+      margin-bottom: 3px;
+
+    }
+
+
+    /* =====================================================
+       FOLGA
+       ===================================================== */
+
+    .registro-folga {
+
+      border-left-color: #6c757d;
+
+    }
+
+
+    .registro-folga .linha {
+
+      color: #6c757d;
+
+    }
+
+
+    .folga {
+
+      background: #f1f3f5;
+
+      color: #6c757d;
+
+      border-radius: 9px;
+
+      padding: 12px;
+
+      text-align: center;
+
+      font-weight: 700;
+
+    }
+
+
+    /* =====================================================
+       MENSAGENS
+       ===================================================== */
+
+    .mensagem {
+
+      background: white;
+
+      border-radius: 14px;
+
+      padding:
+        25px
+        15px;
+
+      text-align: center;
+
+      color: #6c757d;
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.08);
+
+    }
+
+
+    .mensagem.erro {
+
+      color: #842029;
+
+      background: #f8d7da;
+
+    }
+
+
+    .mensagem.sucesso {
+
+      color: #0f5132;
+
+      background: #d1e7dd;
+
+    }
+
+
+    .icone {
+
+      font-size: 35px;
+
+      margin-bottom: 8px;
+
+    }
+
+
+    /* =====================================================
+       BOTÃO NOVA CONSULTA
+       ===================================================== */
+
+    .botao-nova {
+
+      width: 100%;
+
+      height: 48px;
+
+      margin-top: 8px;
+
+      border:
+        1px solid #0d6efd;
+
+      border-radius: 10px;
+
+      background: white;
+
+      color: #0d6efd;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+    }
+
+
+    .botao-nova:active {
+
+      transform: scale(.98);
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVO
+       ===================================================== */
+
+    @media (max-width: 400px) {
+
+      .logo {
+
+        font-size: 27px;
+
+      }
+
+
+      .nome {
+
+        font-size: 18px;
+
+      }
+
+
+      .linha {
+
+        font-size: 16px;
+
+      }
+
+
+      .horario {
+
+        font-size: 18px;
+
+      }
+
     }
 
   </style>
@@ -250,11 +696,16 @@
 <header class="topo">
 
   <div class="logo">
+
     ORION
+
   </div>
 
+
   <div class="subtitulo">
+
     Consulta de Escala
+
   </div>
 
 </header>
@@ -263,41 +714,111 @@
 <main class="conteudo">
 
 
-  <section class="pesquisa">
+  <!-- ===================================================
+       FORMULÁRIO
+       =================================================== -->
 
-    <label for="matricula">
-      Matrícula
-    </label>
+  <section
+    class="pesquisa"
+    id="formulario"
+  >
 
-    <input
-      id="matricula"
-      type="tel"
-      inputmode="numeric"
-      autocomplete="off"
-      placeholder="Digite a matrícula"
-      onkeydown="pressionouEnter(event)"
-    >
+
+    <div class="campo">
+
+      <label for="matricula">
+
+        Matrícula
+
+      </label>
+
+
+      <input
+        id="matricula"
+        type="tel"
+        inputmode="numeric"
+        autocomplete="username"
+        placeholder="Digite a matrícula"
+        maxlength="10"
+        onkeydown="pressionouEnter(event)"
+      >
+
+    </div>
+
+
+    <div class="campo">
+
+      <label for="senha">
+
+        Senha
+
+      </label>
+
+
+      <div class="campo-senha">
+
+        <input
+          id="senha"
+          type="password"
+          inputmode="numeric"
+          autocomplete="current-password"
+          placeholder="Digite a senha"
+          onkeydown="pressionouEnter(event)"
+        >
+
+
+        <button
+          type="button"
+          class="mostrar-senha"
+          id="botaoSenha"
+          onclick="alternarSenha()"
+          aria-label="Mostrar senha"
+        >
+
+          👁️
+
+        </button>
+
+      </div>
+
+    </div>
+
 
     <button
       class="botao"
+      id="botaoConsultar"
       onclick="consultar()"
     >
+
       🔎 CONSULTAR
+
     </button>
+
 
   </section>
 
+
+  <!-- ===================================================
+       CARREGANDO
+       =================================================== -->
 
   <div id="carregando">
 
     <div class="spinner"></div>
 
+
     <div style="margin-top:8px;">
+
       Consultando escala...
+
     </div>
 
   </div>
 
+
+  <!-- ===================================================
+       RESULTADO
+       =================================================== -->
 
   <section id="resultado"></section>
 
@@ -308,86 +829,229 @@
 <script>
 
 
+/*
+==========================================================
+URL DA API
+==========================================================
+*/
+
 const API_ORION =
   "https://script.google.com/macros/s/AKfycbzu4_GZ6urs0WnOVIs7B2BtNaEnPou3xUMuyE1H0Y0S5ei5nPpV3W1XbVwmwXUvJogT/exec";
 
 
+/*
+==========================================================
+ENTER
+==========================================================
+*/
+
 function pressionouEnter(event) {
 
   if (event.key === "Enter") {
+
     consultar();
+
   }
 
 }
 
 
-async function consultar() {
+/*
+==========================================================
+MOSTRAR / OCULTAR SENHA
+==========================================================
+*/
+
+function alternarSenha() {
 
   const campo =
+    document.getElementById("senha");
+
+  const botao =
+    document.getElementById("botaoSenha");
+
+
+  if (campo.type === "password") {
+
+    campo.type = "text";
+
+    botao.textContent = "🙈";
+
+    botao.setAttribute(
+      "aria-label",
+      "Ocultar senha"
+    );
+
+  } else {
+
+    campo.type = "password";
+
+    botao.textContent = "👁️";
+
+    botao.setAttribute(
+      "aria-label",
+      "Mostrar senha"
+    );
+
+  }
+
+}
+
+
+/*
+==========================================================
+CONSULTAR
+==========================================================
+*/
+
+async function consultar() {
+
+
+  const campoMatricula =
     document.getElementById("matricula");
 
-  const matricula =
-    campo.value.trim();
 
+  const campoSenha =
+    document.getElementById("senha");
+
+
+  const botao =
+    document.getElementById(
+      "botaoConsultar"
+    );
+
+
+  const matricula =
+    campoMatricula.value.trim();
+
+
+  const senha =
+    campoSenha.value.trim();
+
+
+  /*
+   * Validação da matrícula
+   */
 
   if (!matricula) {
 
     mostrarMensagem(
-      "🔎",
-      "Digite a matrícula."
+      "⚠️",
+      "Digite a matrícula.",
+      true
     );
 
-    campo.focus();
+    campoMatricula.focus();
 
     return;
+
   }
 
+
+  /*
+   * Somente números
+   */
 
   if (!/^\d+$/.test(matricula)) {
 
     mostrarMensagem(
       "⚠️",
-      "Digite somente números."
+      "A matrícula deve conter somente números.",
+      true
     );
 
-    campo.focus();
+    campoMatricula.focus();
 
     return;
+
   }
 
+
+  /*
+   * Validação da senha
+   */
+
+  if (!senha) {
+
+    mostrarMensagem(
+      "🔐",
+      "Digite a senha.",
+      true
+    );
+
+    campoSenha.focus();
+
+    return;
+
+  }
+
+
+  /*
+   * Inicia carregamento
+   */
 
   mostrarCarregando();
 
 
+  botao.disabled = true;
+
+  botao.textContent =
+    "CONSULTANDO...";
+
+
   try {
+
+
+    /*
+     * Monta a URL.
+     */
 
     const url =
       API_ORION +
       "?matricula=" +
-      encodeURIComponent(matricula);
+      encodeURIComponent(matricula) +
+      "&senha=" +
+      encodeURIComponent(senha);
 
+
+    /*
+     * Consulta a API.
+     */
 
     const resposta =
-      await fetch(url, {
-        method: "GET",
-        cache: "no-store"
-      });
+      await fetch(
+        url,
+        {
+          method: "GET",
+          cache: "no-store"
+        }
+      );
 
 
     if (!resposta.ok) {
 
       throw new Error(
-        "Erro HTTP " + resposta.status
+        "Erro HTTP " +
+        resposta.status
       );
 
     }
 
 
+    /*
+     * Converte resposta para JSON.
+     */
+
     const dados =
       await resposta.json();
 
 
+    /*
+     * Mostra resultado.
+     */
+
     mostrarResultado(dados);
+
 
   }
 
@@ -395,52 +1059,123 @@ async function consultar() {
 
     console.error(erro);
 
+
     mostrarMensagem(
       "⚠️",
-      "Não foi possível consultar a escala."
+      "Não foi possível consultar a escala.",
+      true
     );
 
   }
+
 
   finally {
 
     esconderCarregando();
 
+    botao.disabled = false;
+
+    botao.textContent =
+      "🔎 CONSULTAR";
+
   }
 
 }
 
 
+/*
+==========================================================
+CARREGANDO
+==========================================================
+*/
+
 function mostrarCarregando() {
 
-  document.getElementById("carregando")
-    .style.display = "block";
+  document.getElementById(
+    "carregando"
+  ).style.display = "block";
 
-  document.getElementById("resultado")
-    .innerHTML = "";
+
+  document.getElementById(
+    "resultado"
+  ).innerHTML = "";
 
 }
 
+
+/*
+==========================================================
+ESCONDER CARREGANDO
+==========================================================
+*/
 
 function esconderCarregando() {
 
-  document.getElementById("carregando")
-    .style.display = "none";
+  document.getElementById(
+    "carregando"
+  ).style.display = "none";
 
 }
 
+
+/*
+==========================================================
+MOSTRAR RESULTADO
+==========================================================
+*/
 
 function mostrarResultado(dados) {
 
 
+  /*
+   * Se a API informou erro.
+   */
+
   if (
     !dados ||
+    dados.sucesso === false
+  ) {
+
+
+    let mensagem =
+      "Matrícula ou senha inválida.";
+
+
+    if (
+      dados &&
+      dados.erro
+    ) {
+
+      mensagem =
+        dados.erro;
+
+    }
+
+
+    mostrarMensagem(
+      "🔐",
+      mensagem,
+      true
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+   * Segurança adicional.
+   */
+
+  if (
     !dados.funcionario
   ) {
 
     mostrarMensagem(
       "🔎",
-      "Matrícula não encontrada."
+      "Funcionário não encontrado.",
+      true
     );
 
     return;
@@ -453,11 +1188,20 @@ function mostrarResultado(dados) {
     <div class="funcionario">
 
       <div class="nome">
-        ${escapar(dados.funcionario)}
+
+        ${escapar(
+          dados.funcionario
+        )}
+
       </div>
 
+
       <div class="funcao">
-        ${escapar(dados.funcao || "")}
+
+        ${escapar(
+          dados.funcao || ""
+        )}
+
       </div>
 
     </div>
@@ -468,9 +1212,14 @@ function mostrarResultado(dados) {
   const dias =
     dados.dias || {};
 
+
   const datas =
     Object.keys(dias);
 
+
+  /*
+   * Sem registros.
+   */
 
   if (!datas.length) {
 
@@ -479,124 +1228,287 @@ function mostrarResultado(dados) {
       <div class="mensagem">
 
         <div class="icone">
+
           📅
+
         </div>
 
-        Não existem registros de escala
-        para esta matrícula.
+
+        Não existem registros
+        de escala para esta matrícula.
 
       </div>
 
     `;
 
-    document.getElementById("resultado")
-      .innerHTML = html;
+
+    html += botaoNovaConsulta();
+
+
+    document.getElementById(
+      "resultado"
+    ).innerHTML = html;
+
 
     return;
 
   }
 
 
-  datas.forEach(function(data) {
+  /*
+   * Percorre cada data.
+   */
 
-    html += `
-
-      <div class="data">
-        📅 ${escapar(data)}
-      </div>
-
-    `;
+  datas.forEach(
+    function(data) {
 
 
-    const registros =
-      dias[data] || [];
+      html += `
+
+        <div class="data">
+
+          📅 ${escapar(data)}
+
+        </div>
+
+      `;
 
 
-    registros.forEach(function(registro) {
-
-      html += criarRegistro(registro);
-
-    });
-
-  });
+      const registros =
+        dias[data] || [];
 
 
-  document.getElementById("resultado")
-    .innerHTML = html;
+      /*
+       * Registros daquela data.
+       */
+
+      registros.forEach(
+        function(registro) {
+
+          html +=
+            criarRegistro(registro);
+
+        }
+      );
+
+    }
+  );
+
+
+  /*
+   * Botão nova consulta.
+   */
+
+  html += botaoNovaConsulta();
+
+
+  document.getElementById(
+    "resultado"
+  ).innerHTML = html;
 
 }
 
 
+/*
+==========================================================
+CRIAR REGISTRO
+==========================================================
+*/
+
 function criarRegistro(registro) {
+
 
   const tabela =
     registro.tabela || "-";
 
+
   const veiculo =
     registro.veiculo || "-";
+
 
   const linha =
     registro.linha || "-";
 
+
   const inicio =
     registro.inicio || "";
 
+
   const fim =
     registro.fim || "";
+
 
   const observacao =
     registro.observacao || "";
 
 
-  let horario = "-";
+  /*
+   * Identifica folga.
+   */
+
+  const ehFolga =
+    String(linha)
+      .toUpperCase()
+      .includes("FOLGA");
 
 
-  if (inicio || fim) {
+  /*
+   * Registro de folga.
+   */
 
-    horario =
-      escapar(inicio) +
-      " ➜ " +
-      escapar(fim);
+  if (ehFolga) {
+
+    return `
+
+      <article
+        class="registro registro-folga"
+      >
+
+
+        <div class="linha">
+
+          📅 ${escapar(linha)}
+
+        </div>
+
+
+        <div class="folga">
+
+          FOLGA
+
+        </div>
+
+
+        ${
+          observacao &&
+          observacao !== "NULL"
+          ?
+          `
+
+            <div class="observacao">
+
+              <div
+                class="observacao-titulo"
+              >
+
+                Observação
+
+              </div>
+
+
+              ${escapar(
+                observacao
+              )}
+
+            </div>
+
+          `
+          :
+          ""
+        }
+
+      </article>
+
+    `;
 
   }
 
+
+  /*
+   * Horário.
+   */
+
+  let horario = "-";
+
+
+  if (
+    inicio &&
+    inicio !== "NULL"
+  ) {
+
+    horario =
+      escapar(inicio);
+
+
+    if (
+      fim &&
+      fim !== "NULL"
+    ) {
+
+      horario +=
+        " ➜ " +
+        escapar(fim);
+
+    }
+
+  }
+
+
+  /*
+   * Registro normal.
+   */
 
   return `
 
     <article class="registro">
 
+
       <div class="registro-cabecalho">
 
+
         <div class="tabela">
-          📋 Tabela ${escapar(tabela)}
+
+          📋 Tabela
+          ${escapar(tabela)}
+
         </div>
+
 
         <div class="veiculo">
+
           🚌 ${escapar(veiculo)}
+
         </div>
 
+
       </div>
+
 
       <div class="linha">
+
         📍 ${escapar(linha)}
+
       </div>
+
 
       <div class="horario">
+
         🕒 ${horario}
+
       </div>
 
+
       ${
-        observacao
+        observacao &&
+        observacao !== "NULL"
         ?
         `
 
           <div class="observacao">
 
-            <div class="observacao-titulo">
+
+            <div
+              class="observacao-titulo"
+            >
+
               Observação
+
             </div>
 
-            ${escapar(observacao)}
+
+            ${escapar(
+              observacao
+            )}
 
           </div>
 
@@ -605,6 +1517,7 @@ function criarRegistro(registro) {
         ""
       }
 
+
     </article>
 
   `;
@@ -612,74 +1525,188 @@ function criarRegistro(registro) {
 }
 
 
-function mostrarMensagem(icone, texto) {
+/*
+==========================================================
+MENSAGEM
+==========================================================
+*/
 
-  document.getElementById("resultado")
-    .innerHTML = `
+function mostrarMensagem(
+  icone,
+  texto,
+  erro = false
+) {
 
-      <div class="mensagem">
 
-        <div class="icone">
-          ${icone}
-        </div>
+  document.getElementById(
+    "resultado"
+  ).innerHTML = `
 
-        ${texto}
+    <div
+      class="mensagem
+      ${erro ? "erro" : ""}"
+    >
+
+
+      <div class="icone">
+
+        ${icone}
 
       </div>
 
-    `;
+
+      ${escapar(texto)}
+
+    </div>
+
+  `;
 
 }
 
+
+/*
+==========================================================
+BOTÃO NOVA CONSULTA
+==========================================================
+*/
+
+function botaoNovaConsulta() {
+
+  return `
+
+    <button
+      class="botao-nova"
+      onclick="novaConsulta()"
+    >
+
+      🔄 NOVA CONSULTA
+
+    </button>
+
+  `;
+
+}
+
+
+/*
+==========================================================
+NOVA CONSULTA
+==========================================================
+*/
+
+function novaConsulta() {
+
+
+  document.getElementById(
+    "resultado"
+  ).innerHTML = "";
+
+
+  document.getElementById(
+    "matricula"
+  ).value = "";
+
+
+  document.getElementById(
+    "senha"
+  ).value = "";
+
+
+  document.getElementById(
+    "matricula"
+  ).focus();
+
+}
+
+
+/*
+==========================================================
+ESCAPAR HTML
+==========================================================
+*/
 
 function escapar(valor) {
 
   return String(valor)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
-</script>
+/*
+==========================================================
+SERVICE WORKER
+==========================================================
+*/
 
-<script>
+if (
+  "serviceWorker" in navigator
+) {
 
-if ("serviceWorker" in navigator) {
 
-  window.addEventListener("load", function() {
+  window.addEventListener(
+    "load",
+    function() {
 
-    navigator.serviceWorker
-      .register("./sw.js")
-      .then(function(registro) {
 
-        console.log(
-          "ORION: Service Worker registrado.",
-          registro.scope
+      navigator.serviceWorker
+        .register("./sw.js")
+
+
+        .then(
+          function(registro) {
+
+            console.log(
+              "ORION: Service Worker registrado.",
+              registro.scope
+            );
+
+          }
+        )
+
+
+        .catch(
+          function(erro) {
+
+            console.error(
+              "ORION: erro ao registrar Service Worker:",
+              erro
+            );
+
+          }
         );
 
-      })
-      .catch(function(erro) {
-
-        console.error(
-          "ORION: erro ao registrar Service Worker:",
-          erro
-        );
-
-      });
-
-  });
+    }
+  );
 
 }
 
 </script>
 
-
-
-  
 
 </body>
 
