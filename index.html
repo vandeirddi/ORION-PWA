@@ -646,6 +646,40 @@ function escapar(valor) {
 
 </script>
 
+<script>
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener("load", function() {
+
+    navigator.serviceWorker
+      .register("./sw.js")
+      .then(function(registro) {
+
+        console.log(
+          "ORION: Service Worker registrado.",
+          registro.scope
+        );
+
+      })
+      .catch(function(erro) {
+
+        console.error(
+          "ORION: erro ao registrar Service Worker:",
+          erro
+        );
+
+      });
+
+  });
+
+}
+
+</script>
+
+
+
+  
 
 </body>
 
